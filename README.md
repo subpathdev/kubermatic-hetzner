@@ -130,3 +130,12 @@ spec:
 ```
 
 In this example I'm using the network kubermatic, which is also used by the base cluster.
+
+Additionaly you have to add the csi driver, the following command shows how.
+
+```bash
+echo <hetzner token> > token
+kubectl create secret generic -n kube-system hcloud-csi --from-file token
+kubectl apply -f https://raw.githubusercontent.com/hetznercloud/csi-driver/master/deploy/kubernetes/hcloud-csi.yml
+```
+
